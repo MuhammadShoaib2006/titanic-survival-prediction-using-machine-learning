@@ -18,7 +18,7 @@ app = FastAPI(
 # Enable CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust for deployment if needed
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -41,7 +41,7 @@ class PassengerInput(BaseModel):
 # --- Load model ---
 MODEL_PATH = "model.pkl"
 if not os.path.exists(MODEL_PATH):
-    raise RuntimeError(f"❌ Model file not found at: {MODEL_PATH}")
+    raise RuntimeError(f" Model file not found at: {MODEL_PATH}")
 
 model_package = joblib.load(MODEL_PATH)
 model = model_package["model"]
@@ -123,3 +123,4 @@ async def generate_urls(request: Request):
 #
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+
